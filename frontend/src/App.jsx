@@ -152,50 +152,87 @@ function Seal() {
 // ── Nav
 function Nav() {
   return (
-    <nav style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '0 2.5rem', height: '60px',
-      background: 'rgba(8,11,16,0.85)', backdropFilter: 'blur(12px)',
-      borderBottom: `1px solid ${C.border}`,
-    }}>
-      <span style={{ fontFamily: C.display, fontSize: '1.3rem', color: C.gold, letterSpacing: '0.15em' }}>
+    <nav
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 2.5rem",
+        height: "60px",
+        background: "rgba(8,11,16,0.85)",
+        backdropFilter: "blur(12px)",
+        borderBottom: `1px solid ${C.border}`,
+      }}
+    >
+      <span
+        style={{
+          fontFamily: C.display,
+          fontSize: "1.3rem",
+          color: C.gold,
+          letterSpacing: "0.15em",
+        }}
+      >
         DIEGO
       </span>
 
-      <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-        {['GENERATE', 'VERIFY', 'EXPLORE'].map(l => (
-          <span key={l} style={{
-            fontFamily: C.mono, fontSize: '0.75rem', color: C.muted,
-            letterSpacing: '0.12em', cursor: 'pointer', transition: 'color 0.2s',
-          }}
-            onMouseEnter={e => e.target.style.color = C.gold}
-            onMouseLeave={e => e.target.style.color = C.muted}
-          >{l}</span>
+      <div style={{ display: "flex", gap: "2.5rem", alignItems: "center" }}>
+        {["GENERATE", "VERIFY", "EXPLORE"].map((l) => (
+          <span
+            key={l}
+            style={{
+              fontFamily: C.mono,
+              fontSize: "0.75rem",
+              color: C.muted,
+              letterSpacing: "0.12em",
+              cursor: "pointer",
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={(e) => (e.target.style.color = C.gold)}
+            onMouseLeave={(e) => (e.target.style.color = C.muted)}
+          >
+            {l}
+          </span>
         ))}
 
         <ConnectButton.Custom>
-          {({ account, chain, openAccountModal, openChainModal, openConnectModal, mounted }) => {
-            const connected = mounted && account && chain
+          {({
+            account,
+            chain,
+            openAccountModal,
+            openChainModal,
+            openConnectModal,
+            mounted,
+          }) => {
+            const connected = mounted && account && chain;
             return (
               <div>
                 {!connected ? (
                   <button
                     onClick={openConnectModal}
                     style={{
-                      fontFamily: C.mono, fontSize: '0.75rem', letterSpacing: '0.1em',
-                      padding: '0.45rem 1.1rem', borderRadius: '8px', cursor: 'pointer',
-                      background: 'rgba(240,192,64,0.1)',
+                      fontFamily: C.mono,
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.1em",
+                      padding: "0.45rem 1.1rem",
+                      borderRadius: "8px",
+                      cursor: "pointer",
+                      background: "rgba(240,192,64,0.1)",
                       border: `1px solid rgba(240,192,64,0.4)`,
-                      color: C.gold, transition: 'all 0.2s',
+                      color: C.gold,
+                      transition: "all 0.2s",
                     }}
-                    onMouseEnter={e => {
-                      e.target.style.background = 'rgba(240,192,64,0.2)'
-                      e.target.style.borderColor = C.gold
+                    onMouseEnter={(e) => {
+                      e.target.style.background = "rgba(240,192,64,0.2)";
+                      e.target.style.borderColor = C.gold;
                     }}
-                    onMouseLeave={e => {
-                      e.target.style.background = 'rgba(240,192,64,0.1)'
-                      e.target.style.borderColor = 'rgba(240,192,64,0.4)'
+                    onMouseLeave={(e) => {
+                      e.target.style.background = "rgba(240,192,64,0.1)";
+                      e.target.style.borderColor = "rgba(240,192,64,0.4)";
                     }}
                   >
                     CONNECT WALLET
@@ -204,10 +241,15 @@ function Nav() {
                   <button
                     onClick={openChainModal}
                     style={{
-                      fontFamily: C.mono, fontSize: '0.75rem', letterSpacing: '0.1em',
-                      padding: '0.45rem 1.1rem', borderRadius: '8px', cursor: 'pointer',
-                      background: 'rgba(239,68,68,0.1)', border: `1px solid rgba(239,68,68,0.4)`,
-                      color: '#EF4444',
+                      fontFamily: C.mono,
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.1em",
+                      padding: "0.45rem 1.1rem",
+                      borderRadius: "8px",
+                      cursor: "pointer",
+                      background: "rgba(239,68,68,0.1)",
+                      border: `1px solid rgba(239,68,68,0.4)`,
+                      color: "#EF4444",
                     }}
                   >
                     WRONG NETWORK
@@ -216,39 +258,58 @@ function Nav() {
                   <button
                     onClick={openAccountModal}
                     style={{
-                      fontFamily: C.mono, fontSize: '0.75rem', letterSpacing: '0.1em',
-                      padding: '0.45rem 1.1rem', borderRadius: '8px', cursor: 'pointer',
-                      background: 'rgba(240,192,64,0.08)',
+                      fontFamily: C.mono,
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.1em",
+                      padding: "0.45rem 1.1rem",
+                      borderRadius: "8px",
+                      cursor: "pointer",
+                      background: "rgba(240,192,64,0.08)",
                       border: `1px solid rgba(240,192,64,0.25)`,
-                      color: C.gold, display: 'flex', alignItems: 'center', gap: '0.5rem',
-                      transition: 'all 0.2s',
+                      color: C.gold,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      transition: "all 0.2s",
                     }}
-                    onMouseEnter={e => {
-                      e.currentTarget.style.background = 'rgba(240,192,64,0.15)'
-                      e.currentTarget.style.borderColor = 'rgba(240,192,64,0.5)'
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background =
+                        "rgba(240,192,64,0.15)";
+                      e.currentTarget.style.borderColor =
+                        "rgba(240,192,64,0.5)";
                     }}
-                    onMouseLeave={e => {
-                      e.currentTarget.style.background = 'rgba(240,192,64,0.08)'
-                      e.currentTarget.style.borderColor = 'rgba(240,192,64,0.25)'
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background =
+                        "rgba(240,192,64,0.08)";
+                      e.currentTarget.style.borderColor =
+                        "rgba(240,192,64,0.25)";
                     }}
                   >
-                    <span style={{
-                      width: 7, height: 7, borderRadius: '50%',
-                      background: '#1D9E75', display: 'inline-block', flexShrink: 0,
-                    }} />
+                    <span
+                      style={{
+                        width: 7,
+                        height: 7,
+                        borderRadius: "50%",
+                        background: "#1D9E75",
+                        display: "inline-block",
+                        flexShrink: 0,
+                      }}
+                    />
                     {account.displayName}
-                    <span style={{ color: C.muted, fontSize: '0.7rem' }}>
-                      {account.displayBalance ? `· ${account.displayBalance}` : ''}
+                    <span style={{ color: C.muted, fontSize: "0.7rem" }}>
+                      {account.displayBalance
+                        ? `· ${account.displayBalance}`
+                        : ""}
                     </span>
                   </button>
                 )}
               </div>
-            )
+            );
           }}
         </ConnectButton.Custom>
       </div>
     </nav>
-  )
+  );
 }
 
 // ── Stats bar
@@ -579,6 +640,32 @@ function LiveFeed() {
 // ── Try it section ───────────────────────────────────────────────────────────
 function TryIt({ isConnected }) {
   const [prompt, setPrompt] = useState("");
+  const [output, setOutput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleGenerate() {
+    if (!prompt.trim()) return;
+    setLoading(true);
+    setError("");
+    setOutput("");
+
+    try {
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong");
+      setOutput(data.text);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div style={{ width: "100%", padding: "0 2.5rem 5rem", background: C.bg }}>
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
@@ -594,6 +681,7 @@ function TryIt({ isConnected }) {
         >
           — TRY IT NOW —
         </div>
+
         <div
           style={{
             background: C.surface,
@@ -646,33 +734,135 @@ function TryIt({ isConnected }) {
             <span
               style={{ fontFamily: C.mono, fontSize: "0.7rem", color: C.muted }}
             >
-              claude-sonnet-4 · SHA-256 · Ethereum Sepolia
+              claude-sonnet-4-5 · SHA-256 · Ethereum Sepolia
             </span>
             <button
+              onClick={handleGenerate}
+              disabled={loading || !prompt.trim()}
               style={{
                 fontFamily: C.mono,
                 fontSize: "0.8rem",
                 fontWeight: "500",
                 letterSpacing: "0.1em",
                 padding: "0.7rem 1.5rem",
-                background: "transparent",
-                color: C.text,
-                border: `1px solid ${C.border}`,
+                background: loading ? "rgba(240,192,64,0.05)" : "transparent",
+                color: loading ? C.muted : C.text,
+                border: `1px solid ${
+                  loading ? C.border : "rgba(237,232,220,0.3)"
+                }`,
                 borderRadius: "8px",
-                cursor: isConnected ? "pointer" : "not-allowed",
-                opacity: isConnected ? 1 : 0.5,
+                cursor: loading || !prompt.trim() ? "not-allowed" : "pointer",
+                transition: "all 0.2s",
               }}
             >
-              GENERATE + STAMP ↗
+              {loading ? "GENERATING..." : "GENERATE ↗"}
             </button>
           </div>
         </div>
+
+        {/* Error */}
+        {error && (
+          <div
+            style={{
+              marginTop: "1rem",
+              padding: "1rem 1.25rem",
+              background: "rgba(239,68,68,0.08)",
+              border: "1px solid rgba(239,68,68,0.3)",
+              borderRadius: "12px",
+              fontFamily: C.mono,
+              fontSize: "0.8rem",
+              color: "#EF4444",
+            }}
+          >
+            ⚠ {error}
+          </div>
+        )}
+
+        {/* Claude output */}
+        {output && (
+          <div
+            style={{
+              marginTop: "1rem",
+              background: C.surface,
+              border: `1px solid rgba(240,192,64,0.25)`,
+              borderRadius: "16px",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                padding: "0.75rem 1.25rem",
+                borderBottom: `1px solid ${C.border}`,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: C.mono,
+                  fontSize: "0.7rem",
+                  color: C.goldDim,
+                  letterSpacing: "0.1em",
+                }}
+              >
+                CLAUDE OUTPUT
+              </span>
+              <span
+                style={{
+                  fontFamily: C.mono,
+                  fontSize: "0.7rem",
+                  color: C.muted,
+                }}
+              >
+                ready to notarize
+              </span>
+            </div>
+            <div
+              style={{
+                padding: "1.25rem",
+                fontFamily: "sans-serif",
+                fontSize: "0.9rem",
+                color: C.text,
+                lineHeight: 1.75,
+                whiteSpace: "pre-wrap",
+              }}
+            >
+              {output.replace(/##\s+/g, "").replace(/\*\*(.*?)\*\*/g, "$1")}
+            </div>
+            <div style={{ padding: "0 1.25rem 1.25rem" }}>
+              <button
+                disabled={!isConnected}
+                style={{
+                  fontFamily: C.mono,
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.1em",
+                  padding: "0.7rem 1.5rem",
+                  borderRadius: "8px",
+                  cursor: isConnected ? "pointer" : "not-allowed",
+                  background: isConnected
+                    ? "rgba(240,192,64,0.12)"
+                    : "transparent",
+                  border: `1px solid ${
+                    isConnected ? "rgba(240,192,64,0.4)" : C.border
+                  }`,
+                  color: isConnected ? C.gold : C.muted,
+                  opacity: isConnected ? 1 : 0.5,
+                  transition: "all 0.2s",
+                }}
+              >
+                {isConnected
+                  ? "NOTARIZE ON ETHEREUM ↗"
+                  : "CONNECT WALLET TO NOTARIZE"}
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 }
-
-// ── Main app ─────────────────────────────────────────────────────────────────
+// ── Main app
 export default function App() {
   const { address, isConnected } = useAccount();
 
@@ -697,7 +887,7 @@ export default function App() {
         ::-webkit-scrollbar-thumb { background: ${C.border}; border-radius: 3px; }
       `}</style>
 
-<Nav />
+      <Nav />
 
       {/* Hero */}
       <div
